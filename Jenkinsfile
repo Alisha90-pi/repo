@@ -1,10 +1,10 @@
 pipeline {
     tools {
 
-    jdk 'JAVA_HOME'
-	maven 'M2_HOME'
+    jdk 'JAVA_HOME_WIN'
+	maven 'M2_HOME_WIN'
 	}
-	agent any
+	agent (label 'winslave')
 	stages{
         
        stage('git checkout') {
@@ -16,17 +16,17 @@ pipeline {
         }
         stage('compile') {
             steps {
-                sh 'mvn compile'
+                bat 'mvn compile'
             }
         }
         stage('test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
             }
 		stage('package'){
             steps{
-            sh 'mvn package'			
+            bat 'mvn package'			
         }
     }
     }
