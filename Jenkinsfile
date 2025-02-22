@@ -4,7 +4,7 @@ pipeline {
     jdk 'JAVA_HOME_WIN'
 	maven 'M2_HOME_WIN'
 	}
-	agent (label 'winslave')
+	agent {label 'winslave'}
 	stages{
         
        stage('git checkout') {
