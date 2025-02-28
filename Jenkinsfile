@@ -27,8 +27,32 @@ pipeline {
 	stage('package'){
              steps{
 		sh 'mvn clean package'   
-                sh "mv target/*.jar target/myweb.jar"			
+                sh "mv target/*.jar target/myweb.jar"
+	     }
+	}
+		stage("deploy"){
+	   steps{
+
+      sshagent(['ec2-user(tomcat)(tomcat)']) {
+
+	        sh """
+                 
+            scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@3.110.158.98:/home/ec2-user/tomcat10/webapps/
+
+              ssh ec2-user@3.110.158.98:/home/ec2-user/tomcat10/bin/shutdown.sh
+               ssh ec2-user@3.110.158.98:/home/ec2-user/tomcat10/bin/startup.sh
+            
+          
+          """
+
+                 }
+
+	   
+	    }
+		  
+	  }     
         }
-    }
-  }
-}
+    
+     }
+
+ 
