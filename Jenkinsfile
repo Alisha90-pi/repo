@@ -7,7 +7,7 @@ pipeline {
 	agent any 
 	stages{
         
-       stage('git checkout') {
+       stage("git checkout") {
             steps {
                 git 'https://github.com/Alisha90-pi/repo.git'
             
