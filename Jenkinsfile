@@ -1,15 +1,15 @@
 pipeline {
     tools {
 
-    jdk 'JAVA_HOME_LINUX'
-	maven 'M2_HOME_LINUX'
+    jdk 'JAVA_HOME'
+	maven 'M2_HOME'
 	}
-	agent {label 'linuxslave'}
+	agent any 
 	stages{
         
-       stage('git checkout') {
+       stage('checkout') {
             steps {
-                git  'https://github.com/Alisha90-pi/repo.git'
+                git  'htpps://github.com/nishankainfo/webapp.git'
             
                 
             }
