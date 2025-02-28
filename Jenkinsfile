@@ -9,7 +9,7 @@ pipeline {
         
        stage('checkout') {
             steps {
-                git  'htpps://github.com/nishankainfo/webapp.git'
+                git  'https://github.com/Alisha90-pi/repo.git'
             
                 
             }
@@ -26,7 +26,8 @@ pipeline {
             }
 		stage('package'){
             steps{
-            sh 'mvn package'			
+		sh 'mvn clean package'   
+             sh 'mv target /*.war target/myweb.war'			
         }
     }
     }
