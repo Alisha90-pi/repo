@@ -7,7 +7,7 @@ pipeline {
 	agent any 
 	stages{
         
-       stage('checkout') {
+       stage('git checkout') {
             steps {
                 git  'https://github.com/Alisha90-pi/repo.git'
             
@@ -27,7 +27,7 @@ pipeline {
 		stage('package'){
             steps{
 		sh 'mvn clean package'   
-             sh 'mv target /*.war target/myweb.war'			
+             sh 'mv target /*.jar target/myweb.jar'			
         }
     }
     }
